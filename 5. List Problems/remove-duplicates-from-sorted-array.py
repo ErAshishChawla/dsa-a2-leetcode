@@ -1,7 +1,7 @@
 from typing import List
 
 
-def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums: List[int]) -> int:
     # l = len(nums)
 
     # i = 0
@@ -37,3 +37,22 @@ def removeDuplicates(self, nums: List[int]) -> int:
         nums[i] = keys[i]
 
     return len(keys)
+
+
+def removeDuplicates2(arr: List[int]):
+    # We always have a unique value at the start of the array
+    # We start from the second element
+    swapper = 1
+    for traverser in range(1, len(arr)):
+        if arr[traverser] != arr[traverser - 1]:
+            # it means we found a unique value and we need to copy it to the swapper
+            arr[swapper] = arr[traverser]
+            swapper += 1
+        else:
+            # it means we found a duplicate and we do not need to do anything
+            continue
+
+
+arr = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+removeDuplicates2(arr)
+print(arr)
